@@ -35,5 +35,13 @@ async def get_datastore() -> DataStore:
             from datastore.providers.qdrant_datastore import QdrantDataStore
 
             return QdrantDataStore()
+
+        case "cosmosdb":
+
+            input("Attach debugger and press enter to continue...")
+
+            from datastore.providers.cosmosdb_datastore import CosmosDBDataStore
+
+            return await CosmosDBDataStore.init()
         case _:
             raise ValueError(f"Unsupported vector database: {datastore}")
